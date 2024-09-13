@@ -1,0 +1,25 @@
+:root {
+    --main-color: #002856;
+    --main-color-light: #03428a;
+    --sec-color: #FFB71B;
+    --text-white: #fff;
+    --bg-white: #fff;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+.input-group-text {
+    cursor: pointer;
+}

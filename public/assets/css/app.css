@@ -1,0 +1,334 @@
+:root {
+    --main-color: #002856;
+    --sec-color: #FFB71B;
+    --text-white: #fff;
+    --bg-white: #fff;
+}
+
+.rounded-bottom-5 {
+    border-radius: 0 0 90px 90px;
+}
+
+.br-100 {
+    border-radius: 100%;
+}
+
+.navbar {
+    background: transparent !important;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: var(--text-white) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ham-menu {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 100%;
+    text-align: center;
+    background-color: var(--main-color);
+    color: var(--text-white);
+    font-size: 26px;
+}
+
+.font-center {
+    color: var(--text-white) !important;
+    position: absolute;
+    top: 24px;
+    /* right: 15px; */
+    right: 67px;
+}
+
+.btn-dark-1 {
+    background-color: var(--main-color);
+    color: var(--text-white);
+    border: 3px solid var(--main-color);
+}
+
+.btn-dark-1:hover {
+    background-color: var(--main-color);
+    color: var(--text-white);
+    border: 3px solid var(--main-color);
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    background-color: var(--bg-white);
+}
+
+/* app.css */
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: var(--text-white) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search {
+    background: var(--bg-white);
+    color: var(--main-color);
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled .search {
+    color: var(--text-white);
+    background-color: var(--main-color) !important;
+    /* bg-dark equivalent */
+}
+
+.navbar.scrolled .search:hover {
+    color: var(--main-color);
+    background-color: var(--sec-color) !important;
+    /* bg-dark equivalent */
+}
+
+.navbar.scrolled .search .font {
+    color: var(--bg-white);
+}
+
+button.slide-btn[aria-current="true"] {
+    background: var(--sec-color);
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--sec-color) !important;
+    border-radius: 50%;
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+    left: 50px;
+    /* Jarak dari sisi kiri */
+}
+
+.carousel-control-next {
+    right: 50px;
+    /* Jarak dari sisi kanan */
+}
+
+.carousel-control-prev .carousel-control-prev-icon,
+.carousel-control-next .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--sec-color) !important;
+    background-size: 100%, 100%;
+}
+
+/* About */
+.section-desc {
+    margin: 0 auto 30px;
+    font-weight: 600;
+    max-width: 575px;
+    font-size: 16px;
+}
+
+.section-line {
+    border-top: 1px solid var(--sec-color);
+    position: relative;
+}
+
+.section-line:after {
+    content: '';
+    width: 132px;
+    height: 3px;
+    background-color: var(--sec-color);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+
+/* Card */
+
+.card {
+    min-height: 500px;
+    transition: background-color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: fill;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.card:hover {
+    border: 1px solid #002856;
+}
+
+.scale {
+    background: transparent;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    -ms-transition: .3s ease;
+    -o-transition: .3s ease;
+}
+
+.scale:hover {
+    scale: 98%;
+}
+
+/* Btn */
+
+.bg-sec {
+    background: var(--main-color);
+    transition: all .3s;
+    border: none;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+.bg-sec:hover {
+    color: var(--main-color);
+    background: var(--sec-color);
+}
+
+.bg-sec2 {
+    color: var(--main-color);
+    background: var(--sec-color);
+    transition: all .3s;
+    border: none;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+}
+
+.bg-sec2:hover {
+    color: #ffffff;
+    background: #b8810b;
+}
+
+.card-footer {
+
+    background: transparent;
+    border: none;
+}
+
+.bg-footer {
+    background: url(../img/content/bg-footer.jpg);
+    background-size: cover;
+}
+
+footer {
+    color: var(--sec-color);
+}
+
+footer .container ul li a {
+    color: var(--sec-color);
+}
+
+.footer-link {
+    color: var(--sec-color);
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+
+.footer-link:hover{
+    color: #b8810b;
+    text-decoration: underline;
+}
+
+.navbar-link {
+    text-shadow: var(--main-color) 1px;
+    color: var(--main-color);
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+
+.navbar-link:hover{
+    color: var(--sec-color) !important;
+}
+
+.active {
+    color: var(--sec-color) !important;
+}
+
+.search-container {
+    display: flex;
+    align-items: center; /* Mengatur item secara vertikal di tengah */
+}
+.search-container .btn {
+    margin-left: -40px; /* Membuat tombol tampil di sebelah kanan */
+}
+
+.form-control {
+    transition: all .3s ease !important;
+    -webkit-transition: all .3s ease !important;
+    -moz-transition: all .3s ease !important;
+    -ms-transition: all .3s ease !important;
+    -o-transition: all .3s ease !important;
+}
+
+/* Menggunakan animasi untuk input yang muncul */
+.input-animation {
+    animation: slideIn 0.5s forwards;
+}
+
+#inputContainer {
+    border: none;
+    outline: none;
+    color: var(--text-white);
+    font-weight: bold;
+    padding: 9px;
+    background: var(--main-color);
+}
+
+.text-container {
+    max-width: 600px; /* Batasi lebar teks jika diperlukan */
+}
+
+@media (max-width: 768px) {
+    .card-img-overlay {
+        padding: 2rem; /* Kurangi padding pada layar kecil */
+    }
+
+    .text-container {
+        max-width: 100%; /* Pastikan teks mengambil lebar penuh pada layar kecil */
+    }
+}
+
+.bg-main-1 {
+    background: var(--main-color) !important;
+}
+.bg-sec-1 {
+    background: var(--sec-color) !important; 
+}
+ 
