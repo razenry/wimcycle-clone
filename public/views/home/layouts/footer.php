@@ -8,7 +8,7 @@
                     <form>
                         <div class="d-flex flex-column flex-md-row gap-2">
                             <div class="">
-                                <label for="newsletter1" class="visually-hidden">Email address</label>
+                                <label for="newsletter1" class="visually-hidden">Alamat Email</label>
                             </div>
                             <div class="">
                                 <input id="newsletter1" type="text" class="form-control mb-2 mb-md-0" placeholder="Email address" />
