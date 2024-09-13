@@ -8,5 +8,5 @@ class Admin
         App::view("admin/layouts/navbar");
         App::view("admin/index");
         App::view("admin/layouts/footer");
-    }   
+    }
 }

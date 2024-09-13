@@ -31,7 +31,7 @@ class Routes
     public static function assets($path = '')
     {
         // Pastikan ini sesuai dengan struktur direktori Anda
-        $host = self::base('public/assets/');
+        $host = "http://localhost/wimcycle-clone/public/assets/";
         return rtrim($host, '/') . '/' . ltrim($path, '/');
     }
 
