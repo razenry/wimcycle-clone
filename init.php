@@ -3,7 +3,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'db_lomba');
+define('DB_NAME', 'db_wimcycle');
 
 // Autoload Core Libraries
 spl_autoload_register(function ($class) {

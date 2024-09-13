@@ -21,7 +21,7 @@ class NotFound
 
         $data['message'] = $message;
 
-        App::view("test/index", $data);
+        App::view("error/index", $data);
 
     }
 }
