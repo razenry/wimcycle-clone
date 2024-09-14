@@ -1,4 +1,5 @@
 </div>
+</div>
 <!-- Libs JS -->
 <script src="<?= Routes::assets('dist/libs/apexcharts/dist/apexcharts<>.min.js?1692870487') ?>" defer></script>
 <script src="<?= Routes::assets('dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487') ?>" defer></script>
@@ -7,6 +8,11 @@
 <!-- Tabler Core -->
 <script src="<?= Routes::assets('dist/js/tabler.min.js?1692870487') ?>" defer></script>
 <script src="<?= Routes::assets('dist/js/demo.min.js?1692870487') ?>" defer></script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<?php  ?>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
