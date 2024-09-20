@@ -1,0 +1,84 @@
+
+    // Session starts and user is redirected to the appropriate page if not logged in
+function test_session_starts_and_redirects_if_not_logged_in() {
+    // Mock session and Routes
+    $_SESSION = [];
+    Routes::shouldReceive('base')->with('auth')->andReturn('/auth');
+
+    // Start output buffering to capture header
+    ob_start();
+    Category::checkSession();
+    $output = ob_get_clean();
+
+    // Assert session message and redirection
+    $this->assertEquals("You do not have an active session.", $_SESSION['gagal']);
+    $this->assertStringContainsString('Location: /auth', $output);
+}
+
+    // User without an active session is redirected to the login page
+function test_user_without_active_session_redirected_to_login() {
+    // Mock session and Routes
+    $_SESSION = ['login' => false];
+    Routes::shouldReceive('base')->with('auth')->andReturn('/auth');
+
+    // Start output buffering to capture header
+    ob_start();
+    Category::checkSession();
+    $output = ob_get_clean();
+
+    // Assert session message and redirection
+    $this->assertEquals("You do not have an active session.", $_SESSION['gagal']);
+    $this->assertStringContainsString('Location: /auth', $output);
+}
+
+    // Admin or Officer users can access the category management page
+function test_admin_or_officer_can_access_category_management_page() {
+    // Mock session and Routes
+    $_SESSION = ['login' => true, 'user' => ['level' => 'Admin']];
+    Routes::shouldReceive('base')->with('admin/category')->andReturn('/admin/category');
+
+    // Start output buffering to capture header
+    ob_start();
+    $category = new Category();
+    $category->index();
+    $output = ob_get_clean();
+
+    // Assert no error message and correct redirection
+    $this->assertEmpty($_SESSION['gagal']);
+    $this->assertStringContainsString('Location: /admin/category', $output);
+}
+
+    // User roles are checked to ensure they are Admin or Officer.
+function test_user_roles_check_for_admin_or_officer() {
+    // Set up session data
+    $_SESSION = [
+        'login' => true,
+        'user' => [
+            'level' => 'Admin'
+        ]
+    ];
+
+    // Call the checkSession method
+    Category::checkSession();
+
+    // Assert that the session message is not set for Admin
+    $this->assertArrayNotHasKey('gagal', $_SESSION);
+
+    // Update user level to Officer
+    $_SESSION['user']['level'] = 'Officer';
+
+    // Call the checkSession method again
+    Category::checkSession();
+
+    // Assert that the session message is not set for Officer
+    $this->assertArrayNotHasKey('gagal', $_SESSION);
+
+    // Update user level to Customer
+    $_SESSION['user']['level'] = 'Customer';
+
+    // Call the checkSession method with Customer role
+    Category::checkSession();
+
+    // Assert that the session message is set for Customer
+    $this->assertEquals("You do not have access to this page.", $_SESSION['gagal']);
+}

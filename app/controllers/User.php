@@ -6,7 +6,7 @@
  * Kelas ini menangani berbagai operasi terkait pengguna, termasuk menampilkan daftar pengguna,
  * menambahkan, memperbarui, menghapus pengguna, serta mengelola profil pengguna.
  */
-class User extends Controller
+class User 
 {
     private $layouts = "backend/layouts/";
     private $admin = "backend/admin/";

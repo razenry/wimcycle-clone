@@ -1,5 +1,59 @@
 </div>
 </div>
+
+<style>
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: right;
+        margin-top: 0.75rem;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_info {
+        float: left;
+        margin-top: 0.75rem;
+    }
+
+    @media (max-width: 767px) {
+
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_paginate {
+            float: none;
+            text-align: center;
+            margin-top: 0.75rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .dataTables_wrapper .dataTables_filter input {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+    }
+
+    .progress-bar {
+        width: 100%;
+        /* Full width for progress bars */
+    }
+
+    /* Ensure table elements stay responsive */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Reduce button sizes on small devices */
+    @media (max-width: 576px) {
+        .table-sort {
+            font-size: 0.9rem;
+            padding: 0.5rem;
+        }
+    }
+</style>
+
+
 <!-- Libs JS -->
 <script src="<?= Routes::assets('dist/libs/apexcharts/dist/apexcharts<>.min.js?1692870487') ?>" defer></script>
 <script src="<?= Routes::assets('dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487') ?>" defer></script>
@@ -12,7 +66,135 @@
 <!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<?php  ?>
+<!-- Js -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all delete buttons
+        var deleteButtons = document.querySelectorAll('.delete-btn');
+
+        deleteButtons.forEach(function(button) {
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default link behavior
+
+                var url = this.getAttribute('href'); // Get the URL from the href attribute
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    customClass: {
+                        container: 'swal2-dark'
+                    },
+                    background: '#151F2C',
+                    color: '#fff',
+                    confirmButtonColor: '#0054A6',
+                    confirmButtonText: 'OK',
+                    showCancelButton: true,
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = url; // Redirect to the delete URL
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+
+<?php if (isset($_SESSION['gagal'])): ?>
+    <script>
+        Swal.fire({
+            title: "Failed!",
+            html: `<?= $_SESSION['gagal'] ?>`, // Ensure HTML is not escaped
+            icon: "error",
+            customClass: {
+                container: 'swal2-dark'
+            },
+            background: '#151F2C',
+            color: '#fff',
+            confirmButtonColor: '#0054A6',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    <?php unset($_SESSION['gagal']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['warning'])): ?>
+    <script>
+        Swal.fire({
+            title: "Warning!",
+            html: `<?= $_SESSION['warning'] ?>`, // Ensure HTML is not escaped
+            icon: "warning",
+            customClass: {
+                container: 'swal2-dark'
+            },
+            background: '#151F2C',
+            color: '#fff',
+            confirmButtonColor: '#0054A6',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    <?php unset($_SESSION['warning']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['info'])): ?>
+    <script>
+        Swal.fire({
+            title: "Info",
+            html: `<?= $_SESSION['info'] ?>`, // Ensure HTML is not escaped
+            icon: "info",
+            customClass: {
+                container: 'swal2-dark'
+            },
+            background: '#333',
+            color: '#fff',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    <?php unset($_SESSION['info']); ?>
+<?php endif; ?>
+
+
+<?php if (isset($_SESSION['berhasil'])) : ?>
+    <script>
+        Swal.fire({
+            title: "Success!",
+            text: `<?= $_SESSION['berhasil'] ?>`,
+            icon: "success",
+            customClass: {
+                container: 'swal2-dark'
+            },
+            background: '#151F2C',
+            color: '#fff',
+            confirmButtonColor: '#0054A6',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    <?php unset($_SESSION['berhasil']); ?>
+<?php endif; ?>
+
+<?php if (isset($_SESSION['berhasil_login'])) : ?>
+    <script>
+        Swal.fire({
+            title: "Success to Login!",
+            text: "<?= $_SESSION['berhasil_login'] ?>",
+            icon: "success",
+            customClass: {
+                container: 'swal2-dark'
+            },
+            background: '#151F2C',
+            color: '#fff',
+            confirmButtonColor: '#0054A6',
+            confirmButtonText: 'OK'
+        });
+    </script>
+    <?php unset($_SESSION['berhasil_login']); ?>
+<?php endif; ?>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

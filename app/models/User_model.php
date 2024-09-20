@@ -2,8 +2,7 @@
 
 class User_model extends Database
 {
-    private $pengguna = "pengguna"; // Nama tabel pengguna
-    private $petugas = "petugas"; // Nama tabel petugas
+private $table = "users";
 
     public function __construct()
     {
@@ -22,14 +21,14 @@ class User_model extends Database
         }
     }
 
-    public function getPetugas($email = "")
+    public function getUsers($email = "")
     {
-        if ($email !== "") {
-            $this->query("SELECT * FROM $this->petugas WHERE email = :email");
+        if ($email !== NULL) {
+            $this->query("SELECT * FROM users WHERE email = :email");
             $this->bind(':email', $email);
             return $this->single();
         } else {
-            $this->query("SELECT * FROM $this->petugas");
+            $this->query("SELECT * FROM users");
             return $this->resultSet();
         }
     }
@@ -176,9 +175,9 @@ class User_model extends Database
     }
 
 
-    public function getById($id, $table)
+    public function getById($id)
     {
-        $this->query("SELECT * FROM $table WHERE id = :id");
+        $this->query("SELECT * FROM $this->table WHERE id = :id");
         $this->bind(':id', $id);
         return $this->single();
     }

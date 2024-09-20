@@ -1,7 +1,3 @@
-<!-- <?= $pass = password_hash("admin#1234", PASSWORD_DEFAULT) #$2y$10$2W9xS1F29iZwEvDVoaeyfOOQt6SYk9hT94sCc2Xc4n/Y34HljNIpe
- ?> -->
-
-
 <div class="page page-center">
     <div class="container container-tight py-4">
         <div class="text-center mb-4">
