@@ -69,6 +69,9 @@ class Category
 
     public function status($params = null)
     {
+
+        Session::checkSession("Admin");
+
         $slug = $params[0] ?? null;
         $status = $params[1] ?? null;
 
@@ -146,8 +149,10 @@ class Category
             ];
 
             $record = CategoryModel::getBySlug($slug);
+            $photo = $record['photo'];
 
             if (!empty($_FILES['photo']['name'])) {
+                unlink(Routes::upload("product/$photo"));
                 $input['photo'] = self::upload($_FILES['photo'], $input['slug']);
             } else {
                 $input['photo'] = $record['photo'];
@@ -180,8 +185,11 @@ class Category
     {
         Session::checkSession("Admin");
 
-        $id = $params[0];
-        if (CategoryModel::delete($id)) {
+        $slug = $params[0];
+        if (CategoryModel::delete($slug)) {
+            $record = CategoryModel::getBySlug($slug);
+            $photo = $record['photo'];
+            unlink(Routes::upload("product/$photo"));
             $_SESSION['berhasil'] = "Category deleted successfully.";
         } else {
             $_SESSION['gagal'] = "Failed to delete category.";

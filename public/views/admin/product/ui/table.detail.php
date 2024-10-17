@@ -19,7 +19,7 @@
     </table>
 
     <!-- Category Info Section -->
-    <h5 class="card-title text-muted mb-4">Category Information:</h5>
+    <h5 class="card-title text-muted mb-4">Product Information:</h5>
     <table class="table table-striped table-hover">
         <tbody>
             <tr>
@@ -33,6 +33,18 @@
             <tr>
                 <th scope="row">Description:</th>
                 <td><?= $description ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Price:</th>
+                <td><?= CurrencyFormatter::formatCurrency($price) ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Category:</th>
+                <td><?= $category ?></td>
+            </tr>
+            <tr>
+                <th scope="row">Frame:</th>
+                <td><?= $frame ?></td>
             </tr>
             <tr>
                 <th scope="row">Status:</th>
@@ -54,6 +66,14 @@
                     <td><?= DateHelper::formatIndonesianDate($updated_at) ?></td>
                 </tr>
             <?php endif; ?>
+            <tr>
+                <th scope="row">Photo:</th>
+                <td>
+                    <div class="image-container">
+                        <img src="<?= Routes::storage('product/' . $photo) ?>" alt="<?= $name ?>" class="img-fluid rounded shadow-sm">
+                    </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

@@ -10,7 +10,7 @@ class NotFound
 
         // Redirect to the home page if the requested page is not found.
         if ($params == null) {
-            header('Location:' . Routes::base('Beranda'));
+            header('Location:' . Routes::base('beranda'));
         }
 
         // Set the data for the view.

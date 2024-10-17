@@ -29,6 +29,34 @@ class CategoryModel extends Database
         return self::$db->resultSet();
     }
 
+    public static function getById($id)
+    {
+        // Inisialisasi database jika belum dilakukan
+        if (!self::$db) {
+            self::init();
+        }
+
+        // Query untuk mengambil kategori berdasarkan id
+        self::$db->query("SELECT * FROM " . self::$table . " WHERE id = :id");
+        self::$db->bind(':id', $id);
+
+        // Mengembalikan satu baris hasil atau null jika tidak ditemukan
+        return self::$db->single();
+    }
+
+    public static function getActive()
+    {
+        // Inisialisasi database jika belum dilakukan
+        if (!self::$db) {
+            self::init();
+        }
+
+        // Query untuk mengambil semua kategori
+        self::$db->query("SELECT * FROM " . self::$table . " WHERE status = 1");
+        // Mengembalikan hasil sebagai array asosiatif
+        return self::$db->resultSet();
+    }
+
     public static function getBySlug($slug)
     {
         // Inisialisasi database jika belum dilakukan
@@ -88,7 +116,7 @@ class CategoryModel extends Database
             self::init();
         }
 
-        self::$db->query("UPDATE ". self::$table ." SET status = :status WHERE slug = :slug");
+        self::$db->query("UPDATE " . self::$table . " SET status = :status WHERE slug = :slug");
         self::$db->bind(':slug', $slug);
         self::$db->bind(':status', $status);
         return self::$db->execute();
@@ -126,21 +154,20 @@ class CategoryModel extends Database
         self::$db->bind(':description', $data['description']);
         self::$db->bind(':photo', $data['photo']);
         self::$db->bind(':updated_at', date('Y-m-d H:i:s'));
-        self::$db->bind(':updated_at', date('Y-m-d H:i:s'));
         self::$db->bind(':target', $slug);
 
         return self::$db->execute();
     }
 
-    public static function delete($id)
+    public static function delete($slug)
     {
         if (!self::$db) {
             self::init();
         }
 
         // Prepare SQL query for deleting the category
-        self::$db->query("DELETE FROM " . self::$table . " WHERE id = :id");
-        self::$db->bind(':id', $id);
+        self::$db->query("DELETE FROM " . self::$table . " WHERE slug = :slug");
+        self::$db->bind(':slug', $slug);
 
         return self::$db->execute();
     }

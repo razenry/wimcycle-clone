@@ -84,10 +84,10 @@
                         },
                         background: '#151F2C',
                         color: '#fff',
-                        confirmButtonColor: '#0054A6',
+                        confirmButtonColor: '#d33',
                         confirmButtonText: 'OK',
                         showCancelButton: true,
-                        cancelButtonColor: '#d33',
+                        cancelButtonColor: '#544f4f',
                         confirmButtonText: 'Yes, delete it!',
                         cancelButtonText: 'Cancel'
                     }).then((result) => {

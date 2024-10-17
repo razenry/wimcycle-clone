@@ -21,20 +21,6 @@
                         maxlength="255"><?= isset($data['input']['description']) ? htmlspecialchars($data['input']['description']) : ''; ?></textarea>
                 </div>
 
-
-                <!-- Photo Upload with Preview and Cancel -->
-                <div class="mb-3">
-                    <label for="photo" class="form-label required">Photo</label>
-                    <input type="file" class="form-control" id="photo" name="photo" accept="image/*"
-                        onchange="previewImage(event)">
-                    <div class="mt-3 d-flex justify-content-center position-relative">
-                        <img id="imagePreview" src="" alt="Image Preview"
-                            style="display: none; max-width: 50%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                        <button type="button" id="cancelButton" class="btn btn-danger position-absolute"
-                            style="display: none; top: 10px; right: 10px;" onclick="cancelImage()">Cancel</button>
-                    </div>
-                </div>
-
             </div>
             <div class="card-footer text-end">
                 <div class="d-flex">

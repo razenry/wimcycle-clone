@@ -58,7 +58,7 @@ class Admin
 
         App::view('admin/frame/index', $data, 'admin/layouts/app');
     }
-        
+
 
 
     // Page section
@@ -76,6 +76,30 @@ class Admin
         ];
 
         App::view("admin/slide/index", $data, 'admin/layouts/app');
+    }
+
+    public function product()
+    {
+        Session::checkSession("Admin");
+
+        $data = [
+            'title' => 'Product',
+            'dscription' => 'Product Page!',
+            'link' => 'Product',
+            'navLink' => true,
+            'products' => ProductModel::all()
+        ];
+
+        App::view("admin/product/index", $data, 'admin/layouts/app');
+    }
+
+
+    public function test()
+    {
+
+        echo CurrencyFormatter::formatCurrency(10, 'JPY');
+
+        var_dump(ProductModel::all());
     }
 
     public function logout()

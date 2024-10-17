@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex gap-3 fs-5 align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link active fw-bold mx-3" aria-current="page" href="<?= Routes::base('home') ?>">Home</a>
+                    <a class="nav-link active fw-bold mx-3" aria-current="page" href="<?= Routes::base('/') ?>">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link fw-bold" href="#">Produk</a>

@@ -1,0 +1,10 @@
+<?php
+
+class CurrencyFormatter {
+    public static function toRupiah(int $amount): string {
+        return 'Rp ' . number_format($amount, 0, ',', '.');
+    }
+}
+
+// Contoh penggunaan
+echo CurrencyFormatter::toRupiah(1500000); // Output: Rp 1.500.000

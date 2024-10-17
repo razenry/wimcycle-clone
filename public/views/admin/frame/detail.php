@@ -1,3 +1,5 @@
+
+
 <!-- Page Body -->
 <div class="page-body">
     <div class="container-xl">
@@ -17,7 +19,6 @@
                 'name' => $frame['name'],
                 'description' => $frame['description'],
                 'status' => $frame['status'],
-                'photo' => $frame['photo'],
                 'created_at' => $frame['created_at'],
                 'updated_at' => $frame['updated_at'] ?? '',
             ]) ?>

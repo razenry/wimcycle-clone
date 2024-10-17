@@ -1,8 +1,8 @@
 <div class="page-body">
     <div class="container-xl">
-        <form action="<?= Routes::base('category/add') ?>" method="post" class="card" enctype="multipart/form-data">
+        <form action="<?= Routes::base('product/add') ?>" method="post" class="card" enctype="multipart/form-data">
             <div class="card-header">
-                <h4 class="card-title text-center">Add Category Form</h4>
+                <h4 class="card-title text-center">Add Product Form</h4>
             </div>
             <div class="card-body">
 
@@ -10,7 +10,7 @@
                 <div class="mb-3">
                     <label for="name" class="form-label required">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter name"
-                        value="<?= isset($data['input']['name']) ? htmlspecialchars($data['input']['name']) : ''; ?>">
+                        value="<?= isset($data['input']['name']) ? htmlspecialchars($data['input']['name']) : '' ?>">
                 </div>
 
                 <!-- Description Input -->
@@ -18,9 +18,14 @@
                     <label for="description" class="form-label required">Description</label>
                     <textarea class="form-control" id="description" name="description" rows="4"
                         placeholder="Enter description"
-                        ><?= isset($data['input']['description']) ? htmlspecialchars($data['input']['description']) : ''; ?></textarea>
+                        ><?= isset($data['input']['description']) ? htmlspecialchars($data['input']['description']) : '' ?></textarea>
                 </div>
 
+                <div class="mb-3">
+                    <label for="price" class="form-label required">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="Enter price"
+                        value="<?= isset($data['input']['price']) ? htmlspecialchars($data['input']['price']) : '' ?>">
+                </div>
 
                 <!-- Photo Upload with Preview and Cancel -->
                 <div class="mb-3">
@@ -34,6 +39,27 @@
                             style="display: none; top: 10px; right: 10px;" onclick="cancelImage()">Cancel</button>
                     </div>
                 </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label required">Category</label>
+                    <select class="form-select" name="category" id="category" aria-label="Default select example">
+                        <option selected>Open this select category</option>
+                        <?php foreach (CategoryModel::getActive() as $category) : ?>
+                            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="frame" class="form-label required">Frame</label>
+                    <select class="form-select" name="frame" id="frame" aria-label="Default select example">
+                        <option selected>Open this select frame</option>
+                        <?php foreach (FrameModel::getActive() as $frame) : ?>
+                            <option value="<?= $frame['id'] ?>"><?= $frame['name'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+
 
             </div>
             <div class="card-footer text-end">

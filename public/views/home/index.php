@@ -1,3 +1,5 @@
+<img src="<?= Routes::public('assets/img/content/HEADER-PRODUK.jpg') ?>" class="img-fluid w-100 my-4 d-block d-sm-none" alt="...">
+
 <?= App::extends('home/components/slide') ?>
 
 <!-- About Start -->
