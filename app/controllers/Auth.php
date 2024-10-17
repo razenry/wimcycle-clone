@@ -4,9 +4,15 @@ class Auth
 {
     public function index()
     {
-        App::view("admin/auth/layouts/header");
-        App::view("admin/auth/login");
-        App::view("admin/auth/layouts/footer");
+
+        session_start();
+
+        $data = [
+            'title' => 'Login',
+            'description' => 'Authentication user'
+        ];
+
+        App::view('admin/auth/index', $data, 'admin/auth/layouts/app');
     }
 
     public function login()
@@ -17,8 +23,7 @@ class Auth
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
             $password = $_POST['password'];
 
-            $userModel = App::model('User_model');
-            $user = $userModel->getUsers($email);
+            $user = UserModel::getByEmail($email);
 
             if ($user && password_verify($password, $user['password'])) {
                 if ($user['status'] == 1) {

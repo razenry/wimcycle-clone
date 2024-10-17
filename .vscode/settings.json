@@ -1,3 +1,30 @@
 {
-    "editor.fontFamily": "MesloLGS NF, Fira Code, Consolas, 'Courier New', monospace"
+    "editor.fontFamily": "MesloLGS NF, Fira Code, Consolas, 'Courier New', monospace",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "keyword.control.bg3txt",
+                "settings": {
+                    "foreground": "#C586C0"
+                }
+            },
+            {
+                "scope": "keyword.operator.bg3txt",
+                "settings": {
+                    "foreground": "#ffa200"
+                }
+            },
+            {
+                "scope": "string.first-column.bg3txt",
+                "settings": {
+                    "foreground": "#9CDCFE"
+                }
+            }
+        ]
+    },
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "*.txt": "bg3txt"
+    },
+    "php.version": "8.2"
 }

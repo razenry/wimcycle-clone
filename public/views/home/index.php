@@ -1,32 +1,4 @@
-<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-            aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button class="" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="<?= Routes::public('assets/img/slide1.jpg') ?>" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="<?= Routes::public('assets/img/slide2.jpg') ?>" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="<?= Routes::public('assets/img/slide3.jpg') ?>" class="d-block w-100" alt="...">
-        </div>
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
-<!-- Slide End -->
+<?= App::extends('home/components/slide') ?>
 
 <!-- About Start -->
 <div class="container mt-3 text-center">
@@ -50,59 +22,20 @@
 
     <div class="row justify-content-center g-4 mt-2">
 
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="card h-100 d-flex flex-column">
-                <img src="<?= Routes::public('assets/img/content/CTB-1-352x350.jpg') ?>" class="card-img-top scale" alt="CTB">
-                <div class="card-body mt-3">
-                    <h5 class="card-title text-center fw-bold">CTB</h5>
-                    <p class="card-text text-center">
-                        Sepeda yang cocok bagi Anda yang ingin berpergian dengan teman-teman untuk meningkatkan kebugatan tubuh.
-                    </p>
-                </div>
-                <div class="card-footer d-flex justify-content-center mb-4">
-                    <a href="#" class="btn btn-primary rounded-pill px-3 py-2 bg-sec fw-bolder">
-                        <span>Lihat Semua</span>
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <?php foreach ($categories as $category) : ?>
 
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="card h-100 d-flex flex-column">
-                <img src="<?= Routes::public('assets/img/content/Sepeda-Lipat-16-352x350.jpg') ?>" class="card-img-top scale" alt="Sepeda Lipat">
-                <div class="card-body mt-3">
-                    <h5 class="card-title text-center fw-bold">Sepeda Lipat</h5>
-                    <p class="card-text text-center">
-                        Sepeda lipat yang cocok bagi Anda untuk menjelajahi kota.
-                    </p>
-                </div>
-                <div class="card-footer d-flex justify-content-center mb-4">
-                    <a href="#" class="btn btn-primary rounded-pill px-3 py-2 bg-sec fw-bolder">
-                        <span>Lihat Semua</span>
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                    </a>
-                </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <?= App::component('home/components/card', [
+                    'cardTitle' => $category['name'],
+                    'cardDesc' => $category['description'],
+                    'cardImage' => 'categories/' . $category['photo'],
+                    'cardLink' => Routes::base('/kategori/') . $category['slug'],
+                    'cardButton' => ($category['status'] == 1 ? 'Lihat Semua' : 'Belum Ada Produk')
+                ]);
+                ?>
             </div>
-        </div>
-
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="card h-100 d-flex flex-column">
-                <img src="<?= Routes::public('assets/img/content/COVER_MTB-352x350.jpg') ?>" class="card-img-top scale" alt="Sepeda Gunung (MTB)">
-                <div class="card-body mt-3">
-                    <h5 class="card-title text-center fw-bold">Sepeda Gunung (MTB)</h5>
-                    <p class="card-text text-center">
-                        Sepeda yang cocok bagi Anda ingin merasakan sepeda gunung serbaguna untuk off-road ringan di akhir pekan.
-                    </p>
-                </div>
-                <div class="card-footer d-flex justify-content-center mb-4">
-                    <a href="#" class="btn btn-primary rounded-pill px-3 py-2 bg-sec fw-bolder">
-                        <span>Lihat Semua</span>
-                        <i class="bi bi-arrow-right-circle-fill"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+            
+        <?php endforeach; ?>
 
     </div>
 

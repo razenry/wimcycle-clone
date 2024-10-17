@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 if (isset($_SESSION['user'])) {
     $id = $_SESSION['user']['id'];
@@ -9,10 +9,9 @@ if (isset($_SESSION['user'])) {
 
     if ($level == "Admin") {
         $path = 'assets/img/logo/admin.png';
-    }else {
+    } else {
         $path = 'assets/img/logo/officer.png';
     }
-
 }
 
 ?>
@@ -70,14 +69,17 @@ if (isset($_SESSION['user'])) {
         <div class="navbar">
             <div class="container-xl">
                 <ul class="navbar-nav">
-                    <li class="nav-item <?= $active = !empty($data['nav-link'] && $data['pageTitle'] == "Dashboard") ? "active" : ""; ?>">
+
+                    <!-- Dashboard -->
+                    <li class="nav-item <?= !empty($link == "Dashboard") ? "active" : ""; ?>">
                         <a class="nav-link" href="<?= Routes::base('admin') ?>">
                             <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-dashboard">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 13m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
-                                    <path d="M13.45 11.55l2.05 -2.05" />
-                                    <path d="M6.4 20a9 9 0 1 1 11.2 0z" />
+                                    <path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
+                                    <path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
+                                    <path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" />
+                                    <path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" />
                                 </svg>
                             </span>
 
@@ -87,21 +89,22 @@ if (isset($_SESSION['user'])) {
                         </a>
                     </li>
 
-                    <!-- Master Data -->
-                    <li class="nav-item dropdown ">
+                    <!-- User Management -->
+                    <li class="nav-item dropdown <?= !empty($link == "User Management") ? "active" : ""; ?>">
                         <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
                             <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-database-star">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users-group">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3" />
-                                    <path d="M4 6v6c0 1.43 2.67 2.627 6.243 2.927" />
-                                    <path d="M20 10.5v-4.5" />
-                                    <path d="M4 12v6c0 1.546 3.12 2.82 7.128 2.982" />
-                                    <path d="M17.8 20.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+                                    <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                    <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
+                                    <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                    <path d="M17 10h2a2 2 0 0 1 2 2v1" />
+                                    <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+                                    <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
                                 </svg>
                             </span>
                             <span class="nav-link-title">
-                                Master Data
+                                Users
                             </span>
                         </a>
                         <div class="dropdown-menu">
@@ -109,14 +112,12 @@ if (isset($_SESSION['user'])) {
                                 <div class="dropdown-menu-column">
                                     <a class="dropdown-item" href="./empty.html">
                                         <span class="me-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users-group">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-users">
                                                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                                <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                                <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
-                                                <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                                <path d="M17 10h2a2 2 0 0 1 2 2v1" />
-                                                <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-                                                <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
+                                                <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
                                             </svg>
                                         </span>
                                         <span>Users</span>
@@ -144,21 +145,98 @@ if (isset($_SESSION['user'])) {
                         </div>
                     </li>
 
-                    <li class="nav-item <?= $active = !empty($data['nav-link'] && $data['pageTitle'] == "Category") ? "active" : ""; ?>">
-                        <a class="nav-link" href="<?= Routes::base('admin/category') ?>">
-                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-category">
+                    <!-- Product -->
+                    <li class="nav-item dropdown <?= !empty($link == "Product") ? "active" : ""; ?>">
+                        <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-bike">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 4h6v6h-6z" />
-                                    <path d="M14 4h6v6h-6z" />
-                                    <path d="M4 14h6v6h-6z" />
-                                    <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M5 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M19 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M12 19l0 -4l-3 -3l5 -4l2 3l3 0" />
+                                    <path d="M17 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
                                 </svg>
                             </span>
                             <span class="nav-link-title">
-                                Category
+                                Product
                             </span>
                         </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+
+                                    <a class="dropdown-item" href="<?= Routes::base('admin/category') ?>">
+                                        <span class="me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-category">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M4 4h6v6h-6z" />
+                                                <path d="M14 4h6v6h-6z" />
+                                                <path d="M4 14h6v6h-6z" />
+                                                <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                            </svg>
+                                        </span>
+                                        <span>Category</span>
+                                    </a>
+
+                                    <a class="dropdown-item" href="<?= Routes::base('admin/frame') ?>">
+                                        <span class="me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-frame">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M4 7l16 0" />
+                                                <path d="M4 17l16 0" />
+                                                <path d="M7 4l0 16" />
+                                                <path d="M17 4l0 16" />
+                                            </svg>
+                                        </span>
+                                        <span>Frame</span>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Pages -->
+                    <li class="nav-item dropdown <?= !empty($link == "Pages") ? "active" : ""; ?>">
+                        <a class="nav-link dropdown-toggle" href="#navbar-extra" data-bs-toggle="dropdown" data-bs-auto-close="outside" role="button" aria-expanded="false">
+                            <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                    <path d="M4 13m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                    <path d="M14 4m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                                </svg>
+                            </span>
+                            <span class="nav-link-title">
+                                Page
+                            </span>
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-menu-columns">
+                                <div class="dropdown-menu-column">
+
+                                    <a class="dropdown-item" href="<?= Routes::base('admin/slide') ?>">
+                                        <span class="me-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-slideshow">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M15 6l.01 0" />
+                                                <path d="M3 3m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+                                                <path d="M3 13l4 -4a3 5 0 0 1 3 0l4 4" />
+                                                <path d="M13 12l2 -2a3 5 0 0 1 3 0l3 3" />
+                                                <path d="M8 21l.01 0" />
+                                                <path d="M12 21l.01 0" />
+                                                <path d="M16 21l.01 0" />
+                                            </svg>
+                                        </span>
+                                        <span>Slides</span>
+                                    </a>
+
+
+                                </div>
+
+                            </div>
+                        </div>
                     </li>
 
                 </ul>

@@ -2,83 +2,88 @@
 
 class Admin
 {
-
-    // Check Session Section
-
-    public static function checkSession()
-    {
-        session_start();
-
-        // Check if user is logged in
-        if (!isset($_SESSION['login']) || !$_SESSION['login']) {
-            $_SESSION['gagal'] = "Anda belum login";
-            header("Location: " . Routes::base('auth'));
-            exit();
-        }
-
-        // Check if user is an admin or officer
-        if ($_SESSION['user']['level'] === "Customer") {
-            $_SESSION['gagal'] = "Anda tidak memiliki akses";
-            header("Location: " . Routes::base());
-            exit();
-        }
-
-        // Optional: set session message for admins or officers
-        $_SESSION['pesan'] = "Selamat Datang";
-    }
-
-    // Dashboard Section
-
     public function index()
     {
-        self::checkSession();
 
-        // Set data for dashboard page
-        $data['pageTitle'] = "Dashboard";
-        $data['nav-link'] = true;
-
-        // Display dashboard page
-        App::view("admin/layouts/header");
-        App::view("admin/layouts/navbar", $data);
-        App::view("admin/layouts/page-header", $data);
-        App::view("admin/index");
-        App::view("admin/layouts/page-footer");
-        App::view("admin/layouts/modal");
-        App::view("admin/layouts/footer");
+        Session::checkSession("Admin");
+        header("Location:" . Routes::base('admin/dashboard'));
     }
 
-    // Category Section
+    public function dashboard()
+    {
+
+        Session::checkSession("Admin");
+
+        $data = [
+            'title' => 'Dashboard',
+            'link' => 'Dashboard',
+            'description' => 'Dashboard Page!',
+            'motivation' => ExtendsHelper::getMotivation(),
+            'navLink' => true,
+
+        ];
+
+        // Render view 'home/index' dengan layout 'layouts/main'
+        App::view('admin/index', $data, 'admin/layouts/app');
+    }
+
+    // Product Section
 
     public function category()
     {
-        self::checkSession();
+        Session::checkSession("Admin");
 
-        // Check if there is a parameter for category index
+        $data = [
+            'title' => 'Category',
+            'link' => 'Product',
+            'description' => 'Category Page!',
+            'categories' => CategoryModel::all(),
+            'navLink' => true
+        ];
 
-        // Set data for category page
-        $data['pageTitle'] = "Category";
-        $data['nav-link'] = true;
-        $data['categories'] = App::model("Category_model")->getAll();
-        
-        // Display category page
-        App::view("admin/layouts/header", $data);
-        App::view("admin/layouts/navbar", $data);
-        App::view("admin/layouts/page-header", $data);
-        App::view("admin/category/index", $data);
-        App::view("admin/layouts/page-footer");
-        App::view("admin/layouts/modal");
-        App::view("admin/layouts/footer");
+        App::view('admin/category/index', $data, 'admin/layouts/app');
     }
 
-    // Logout Section
+    public function frame()
+    {
+        Session::checkSession("Admin");
+
+        $data = [
+            'title' => 'Frame',
+            'link' => 'Product',
+            'description' => 'Frame Page!',
+            'frames' => FrameModel::all(),
+            'navLink' => true
+        ];
+
+        App::view('admin/frame/index', $data, 'admin/layouts/app');
+    }
+        
+
+
+    // Page section
+    public function slide()
+    {
+        Session::checkSession("Admin");
+
+        $data = [
+            'title' => 'Slides',
+            'dscription' => 'Slides Page!',
+            'link' => 'Pages',
+            'navLink' => true,
+            'slides' => SlideModel::all()
+
+        ];
+
+        App::view("admin/slide/index", $data, 'admin/layouts/app');
+    }
 
     public function logout()
     {
-        // Destroy session and redirect to login page
-        session_start();
+        Session::checkSession('Admin');
         session_destroy();
         unset($_SESSION);
-        header("Location: " . Routes::base('auth'));
+        header("Location:" . Routes::base('auth'));
         exit();
     }
 }

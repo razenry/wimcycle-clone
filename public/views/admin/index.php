@@ -1,7 +1,11 @@
 <!-- Page body -->
 <div class="page-body">
     <div class="container-xl">
-        <div class="row row-deck row-cards">
+
+        <?= App::extends('admin/components/motivation', ['motivation' => $motivation] ) ?>
+
+        <div class="row row-deck row-cards mt-1">
+
 
             <div class="col-12">
                 <div class="row row-cards">
